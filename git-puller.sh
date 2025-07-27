@@ -1,6 +1,4 @@
 #!/bin/bash
-
 cd;
-cd "/home/blitz/Documents/Obsidian Vault/vault/"
-
+cd "/path/to/your/Obsidian Vault/[vault-wtih-git]"
 git pull
