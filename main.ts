@@ -1,5 +1,5 @@
 import { Plugin } from "obsidian";
-import { exec } from "child_process";
+import { spawn } from "child_process";
 
 export default class GitScriptPlugin extends Plugin {
   async onload() {
@@ -7,17 +7,10 @@ export default class GitScriptPlugin extends Plugin {
       id: "git-pull",
       name: "git pull",
       callback: () => {
-        exec("sh /home/blitz/blitz/scripts/git-puller.sh", (error, stdout, stderr) => {
-          if (error) {
-            console.error(`Error (pull): ${error.message}`);
-            return;
-          }
-          if (stderr) {
-            console.warn(`stderr (pull): ${stderr}`);
-            return;
-          }
-          console.log(`stdout (pull): ${stdout}`);
-        });
+        const pull = spawn("sh", ["/home/blitz/Documents/Obsidian Vault/.obsidian/plugins/git-pp/git-puller.sh"]);
+        pull.stdout.on("data", data => console.log(`stdout (pull): ${data}`));
+        pull.stderr.on("data", data => console.warn(`stderr (pull): ${data}`));
+        pull.on("error", err => console.error(`Error (pull): ${err.message}`));
       }
     });
 
@@ -25,20 +18,12 @@ export default class GitScriptPlugin extends Plugin {
       id: "git-push",
       name: "git push",
       callback: () => {
-        exec("sh /home/blitz/blitz/scripts/git-pusher.sh", (error, stdout, stderr) => {
-          if (error) {
-            console.error(`Error (push): ${error.message}`);
-            return;
-          }
-          if (stderr) {
-            console.warn(`stderr (push): ${stderr}`);
-            return;
-          }
-          console.log(`stdout (push): ${stdout}`);
-        });
+        const push = spawn("sh", ["/home/blitz/Documents/Obsidian Vault/.obsidian/plugins/git-pp/git-pusher.sh"]);
+        push.stdout.on("data", data => console.log(`stdout (push): ${data}`));
+        push.stderr.on("data", data => console.warn(`stderr (push): ${data}`));
+        push.on("error", err => console.error(`Error (push): ${err.message}`));
       }
     });
   }
 }
-
 
