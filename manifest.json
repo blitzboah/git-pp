@@ -1,0 +1,11 @@
+{
+	"id": "git-pp",
+	"name": "git pp",
+	"version": "1.0.4",
+	"minAppVersion": "0.15.0",
+	"description": "pulls / pushes the local changes to github repo",
+	"author": "blitzboah",
+	"authorUrl": "https://github.com/blitzboah",
+	"fundingUrl": "https://blitzboah.github.io",
+	"isDesktopOnly": false
+}
