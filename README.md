@@ -118,6 +118,31 @@ export default class GitScriptPlugin extends Plugin {
 - Linux: `/home/username/Documents/Obsidian Vault`
 - macOS: `/Users/username/Documents/Obsidian Vault`
 
+### Update Shell Scripts
+
+You also need to configure the shell scripts with your vault path:
+
+**git-puller.sh**:
+```bash
+#!/bin/bash
+cd;
+cd "/path/to/your/Obsidian Vault/[vault-wtih-git]"
+git pull
+```
+
+**git-pusher.sh**:
+```bash
+#!/bin/bash
+cd "/path/to/your/Obsidian Vault/[vault-with-git]"
+if [ -n "$(git status --porcelain)" ]; then
+  git add .
+  git commit -m "pushed on $(date)"
+fi
+git push origin main
+```
+
+Replace `/path/to/your/Obsidian Vault/` with your actual vault directory path in both scripts.
+
 ## Dev Setup
 
 To build or modify the plugin:
