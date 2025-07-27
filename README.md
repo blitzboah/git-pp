@@ -43,43 +43,11 @@ npm install
 npm run dev
 ```
 
-### 3. Enable in Obsidian
+### 3. Configure Script Paths
 
-* Open **Obsidian**.
-* Go to **Settings → Community plugins**.
-* Enable **Community plugins** if not already done.
-* Click **"Reload plugins"** or restart Obsidian.
-* Toggle on `git-pp`.
+**Important**: You must configure the plugin with your vault paths before it will work.
 
-## Using the Plugin
-
-* Press `Ctrl+P` (or `Cmd+P` on macOS).
-* Search for `git pull` or `git push`.
-* You can assign custom hotkeys from **Settings → Hotkeys → git-pp**.
-
-## Scripts Used
-
-This plugin runs two shell scripts from your local file system:
-* `git-puller.sh`: Pulls the vault.
-* `git-pusher.sh`: Adds/commits/pushes changes.
-
-Make sure these scripts are executable:
-
-```bash
-chmod +x git-puller.sh
-chmod +x git-pusher.sh
-```
-
-And located inside your plugin folder:
-
-```
-.obsidian/plugins/git-pp/git-puller.sh
-.obsidian/plugins/git-pp/git-pusher.sh
-```
-
-## Configuration
-
-### Update Script Paths
+#### Update Script Paths in main.ts
 
 You need to update the script paths in `main.ts` to match your system:
 
@@ -118,7 +86,7 @@ export default class GitScriptPlugin extends Plugin {
 - Linux: `/home/username/Documents/Obsidian Vault`
 - macOS: `/Users/username/Documents/Obsidian Vault`
 
-### Update Shell Scripts
+#### Configure Shell Scripts
 
 You also need to configure the shell scripts with your vault path:
 
@@ -142,6 +110,46 @@ git push origin main
 ```
 
 Replace `/path/to/your/Obsidian Vault/` with your actual vault directory path in both scripts.
+
+#### Make Scripts Executable
+
+Make sure these scripts are executable:
+
+```bash
+chmod +x git-puller.sh
+chmod +x git-pusher.sh
+```
+
+And located inside your plugin folder:
+
+```
+.obsidian/plugins/git-pp/git-puller.sh
+.obsidian/plugins/git-pp/git-pusher.sh
+```
+
+```bash
+npm run dev
+```
+
+### 4. Enable in Obsidian
+
+* Open **Obsidian**.
+* Go to **Settings → Community plugins**.
+* Enable **Community plugins** if not already done.
+* Click **"Reload plugins"** or restart Obsidian.
+* Toggle on `git-pp`.
+
+## Using the Plugin
+
+* Press `Ctrl+P` (or `Cmd+P` on macOS).
+* Search for `git pull` or `git push`.
+* You can assign custom hotkeys from **Settings → Hotkeys → git-pp**.
+
+## Scripts Used
+
+This plugin runs two shell scripts from your local file system:
+* `git-puller.sh`: Pulls the vault.
+* `git-pusher.sh`: Adds/commits/pushes changes.
 
 ## Dev Setup
 
