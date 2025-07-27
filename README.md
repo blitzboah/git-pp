@@ -161,3 +161,7 @@ npm run dev
 ```
 
 This watches your changes in `main.ts`.
+
+## todo
+
+make it work with mobile
